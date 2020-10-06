@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Complete your registration at Fem Alert</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <p>De Administratoren van FemAlert hebben een account geregistreerd met het volgende email-adres</p>
+    <p><b th:text="${ emailAddress }"></b></p>
+    <br>
+    <p>
+        Als dit klopt klikt u op deze <a th:href="${ verificationLink }">link</a>
+        om de registratie te bevestigen en een nieuw wachtwoord te maken
+    </p>
+    <br>
+    <p>Wees er bewust van dat de link een 30 minuten geldig is!</p>
+    <p>Daarna moet u weer contact opnemen met onze administratoren om een nieuwe link te kunnen krijgen.</p>
+    <br>
+    <br>
+    <p>Met vriendelijke groet,</p>
+    <br>
+    <p>Team FemAlert</p>
+</body>
+</html>
