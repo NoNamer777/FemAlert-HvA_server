@@ -29,7 +29,7 @@ public class User implements Identifiable {
         parameters = {
             @Parameter(name = EntityIdGenerator.INCREMENT_PARAM, value = "1"),
             @Parameter(name = EntityIdGenerator.VALUE_PREFIX_PARAMETER, value = "USR-"),
-            @Parameter(name = EntityIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d"),
+            @Parameter(name = EntityIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%03d")
     })
     private String id;
 
