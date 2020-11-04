@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static nl.femalert.femserver.controller.common.dataFetchers.getStringValue;
+
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
@@ -73,9 +75,9 @@ public class QuestionController {
     }
 
     private Question getQuestionData(ObjectNode questionData) {
-        String id = questionData.get("id") == null ? null : questionData.get("id").asText();
-        String asked = questionData.get("question") == null ? null : questionData.get("question").asText();
-        String answer = questionData.get("answer") == null ? null : questionData.get("answer").asText();
+        String id = getStringValue(questionData, "id");
+        String asked = getStringValue(questionData, "question");
+        String answer = getStringValue(questionData, "answer");
 
         Question question = new Question(id);
         question.setQuestion(asked);

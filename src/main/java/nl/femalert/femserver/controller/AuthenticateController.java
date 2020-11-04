@@ -23,6 +23,7 @@ import javax.mail.MessagingException;
 import java.net.URI;
 import java.util.List;
 
+import static nl.femalert.femserver.controller.common.dataFetchers.getStringValue;
 import static nl.femalert.femserver.controller.entity.UserController.getUserData;
 
 @RestController
@@ -43,7 +44,7 @@ public class AuthenticateController {
 
     @PostMapping("/register")
     public ResponseEntity<User> saveUser(@RequestBody ObjectNode userData) {
-        String password = userData.get("password") == null ? null : userData.get("password").asText();
+        String password = getStringValue(userData, "password");
         User newUser = getUserData(userData);
 
         newUser.setPassword(passwordEncoder.encode(password));
@@ -73,8 +74,8 @@ public class AuthenticateController {
 
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody ObjectNode loginData) throws AuthenticationException {
-        String emailAddress = loginData.get("emailAddress") == null ? null : loginData.get("emailAddress").asText();
-        String password = loginData.get("password") == null ? null : loginData.get("password").asText();
+        String emailAddress = getStringValue(loginData, "emailAddress");
+        String password = getStringValue(loginData, "password");
 
         password = passwordEncoder.encode(password);
 
