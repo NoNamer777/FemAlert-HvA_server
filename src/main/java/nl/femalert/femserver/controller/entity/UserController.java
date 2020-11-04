@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static nl.femalert.femserver.controller.common.dataFetchers.getBooleanValue;
+import static nl.femalert.femserver.controller.common.dataFetchers.getStringValue;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -62,21 +65,21 @@ public class UserController {
     }
 
     public static User getUserData(ObjectNode userData) {
-        String id = userData.get("id") == null ? null : userData.get("id").asText();
-        String emailAddress = userData.get("emailAddress") == null ? null : userData.get("emailAddress").asText();
-        String name = userData.get("name") == null ? null : userData.get("name").asText();
-        String statusTxt = userData.get("status") == null ? null : userData.get("status").asText();
-        Boolean admin = userData.get("admin") == null ? null : userData.get("admin").asBoolean();
+        String id = getStringValue(userData, "id");
+        String emailAddress = getStringValue(userData, "emailAddress");
+        String name = getStringValue(userData, "name");
+        String statusTxt = getStringValue(userData, "status");
+        Boolean admin = getBooleanValue(userData, "admin");
 
         User user = new User(id);
         UserStatus status = UserStatus.parse(statusTxt);
 
-        if (emailAddress != null) user.setEmailAddress(emailAddress);
-        if (name != null) user.setName(name);
-        if (admin != null) user.setAdmin(admin);
-        if (status != null) user.setStatus(status);
+        user.setEmailAddress(emailAddress);
+        user.setName(name);
+        user.setStatus(status);
 
-        if (user.getId() == null) user.setAdmin(false);
+        if (user.getId() == null || admin == null) user.setAdmin(false);
+        else user.setAdmin(admin);
 
         return user;
     }
