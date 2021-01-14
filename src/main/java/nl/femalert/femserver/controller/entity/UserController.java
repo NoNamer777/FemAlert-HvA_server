@@ -77,9 +77,7 @@ public class UserController {
         user.setEmailAddress(emailAddress);
         user.setName(name);
         user.setStatus(status);
-
-        if (user.getId() == null || admin == null) user.setAdmin(false);
-        else user.setAdmin(admin);
+        user.setAdmin(admin);
 
         return user;
     }
