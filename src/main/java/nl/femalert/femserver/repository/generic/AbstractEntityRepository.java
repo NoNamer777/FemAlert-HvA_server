@@ -56,12 +56,10 @@ public class AbstractEntityRepository<E extends Identifiable> implements EntityR
     }
 
     @Override
-    public boolean deleteById(String id) {
+    public void deleteById(String id) {
         E entity = findById(id);
 
         entityManager.remove(entity);
-
-        return findById(id) == null;
     }
 
     private String getEntityClassString() {

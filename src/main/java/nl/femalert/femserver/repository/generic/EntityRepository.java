@@ -14,5 +14,5 @@ public interface EntityRepository<E extends Identifiable> {
 
     E save(E entity);
 
-    boolean deleteById(String id);
+    void deleteById(String id);
 }

@@ -6,7 +6,6 @@ public class JWTokenInfo {
 
     private String userId;
     private String username;
-    private boolean dungeonMaster;
     private boolean admin;
 
     public String getUserId() {
@@ -23,14 +22,6 @@ public class JWTokenInfo {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public boolean isDungeonMaster() {
-        return dungeonMaster;
-    }
-
-    public void setDungeonMaster(boolean dungeonMaster) {
-        this.dungeonMaster = dungeonMaster;
     }
 
     public boolean isAdmin() {
