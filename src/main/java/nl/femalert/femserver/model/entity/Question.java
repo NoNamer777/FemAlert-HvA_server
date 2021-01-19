@@ -33,7 +33,7 @@ public class Question implements Identifiable {
     @Column(name = "question", nullable = false, unique = true)
     private String question;
 
-    @Column(name = "answer", nullable = false)
+    @Column(name = "answer", nullable = false, columnDefinition = "mediumtext")
     private String answer;
 
     protected Question() {}
