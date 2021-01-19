@@ -79,7 +79,7 @@ public class UserController {
         user.setEmailAddress(emailAddress);
         user.setName(name);
         user.setStatus(status);
-        user.setAdmin(admin);
+        user.setAdmin(admin != null && admin);
 
         return user;
     }
