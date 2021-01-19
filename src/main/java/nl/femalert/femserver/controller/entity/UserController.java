@@ -58,10 +58,12 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable String id) {
+    public ResponseEntity<Object> deleteById(@PathVariable String id) {
         User foundUser = getUserById(id);
 
         userRepo.deleteById(foundUser.getId());
+
+        return ResponseEntity.ok().build();
     }
 
     public static User getUserData(ObjectNode userData) {

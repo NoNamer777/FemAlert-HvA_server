@@ -68,10 +68,12 @@ public class EventController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable String id) {
+    public ResponseEntity<Object> deleteById(@PathVariable String id) {
         Event foundEvent = getEventById(id);
 
         eventRepo.deleteById(foundEvent.getId());
+
+        return ResponseEntity.ok().build();
     }
 
     public static Event getEventData(ObjectNode eventData) {

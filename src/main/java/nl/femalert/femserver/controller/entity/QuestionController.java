@@ -68,10 +68,12 @@ public class QuestionController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable String id) {
+    public ResponseEntity<Object> deleteById(@PathVariable String id) {
         Question foundQuestion = getQuestionById(id);
 
         questionRepo.deleteById(foundQuestion.getId());
+
+        return ResponseEntity.ok().build();
     }
 
     private Question getQuestionData(ObjectNode questionData) {

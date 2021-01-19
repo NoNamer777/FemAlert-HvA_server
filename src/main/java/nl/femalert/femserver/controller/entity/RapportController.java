@@ -76,10 +76,12 @@ public class RapportController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable String id) {
+    public ResponseEntity<Object> deleteById(@PathVariable String id) {
         Rapport foundRapport = getRapportById(id);
 
         rapportRepo.deleteById(foundRapport.getId());
+
+        return ResponseEntity.ok().build();
     }
 
     private Rapport getRapportData(ObjectNode rapportData) {
