@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bevestiging: Bericht verzonden</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <p>Hallo, <span th:text="${ name }"></span></p>
+    <p>Uw bericht is verzonden.</p>
+    <br>
+    <p>Ter bevestiging is hieronder uw bericht nogmaals te zien.</p>
+    <br>
+    <hr>
+    <hr>
+    <div><p><b>Email Address: </b></p><p th:text="${ emailAddress }"></p></div>
+    <hr>
+    <div><p><b>Onderwerp: </b></p><p th:text="${ subject }"></p></div>
+    <hr>
+    <p th:text="${ body }"></p>
+    <hr>
+    <hr>
+    <br>
+    <br>
+    <p>Met vriendelijke groet,</p>
+    <br>
+    <p>Team FemAlert</p>
+</body>
+</html>
