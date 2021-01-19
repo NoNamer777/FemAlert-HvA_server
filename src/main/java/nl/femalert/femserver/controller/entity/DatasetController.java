@@ -81,7 +81,7 @@ public class DatasetController {
         return ResponseEntity.ok().build();
     }
 
-    public static Dataset getDatasetData(ObjectNode datasetData) {
+    private Dataset getDatasetData(ObjectNode datasetData) {
         String id = getStringValue(datasetData, "id");
         String name = getStringValue(datasetData, "name");
         String basis = getStringValue(datasetData, "basis");

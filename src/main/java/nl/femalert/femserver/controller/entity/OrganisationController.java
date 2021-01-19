@@ -82,7 +82,7 @@ public class OrganisationController {
         return ResponseEntity.ok().build();
     }
 
-    public static Organisation getOrganisationData(ObjectNode organisationData) {
+    private Organisation getOrganisationData(ObjectNode organisationData) {
         String id = getStringValue(organisationData, "id");
         String name = getStringValue(organisationData, "name");
         String description = getStringValue(organisationData, "description");

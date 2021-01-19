@@ -76,7 +76,7 @@ public class EventController {
         return ResponseEntity.ok().build();
     }
 
-    public static Event getEventData(ObjectNode eventData) {
+    private Event getEventData(ObjectNode eventData) {
         String id = getStringValue(eventData, "id");
         String name = getStringValue(eventData, "name");
         Boolean active = getBooleanValue(eventData, "active");
