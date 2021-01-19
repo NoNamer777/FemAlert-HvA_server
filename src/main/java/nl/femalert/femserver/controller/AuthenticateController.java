@@ -5,7 +5,6 @@ import nl.femalert.femserver.model.UserStatus;
 import nl.femalert.femserver.model.entity.User;
 import nl.femalert.femserver.model.helper.exception.AuthenticationException;
 import nl.femalert.femserver.model.helper.exception.EntityAlreadyExistsException;
-import nl.femalert.femserver.model.helper.exception.UserNotCompletedRegistrationException;
 import nl.femalert.femserver.model.helper.security.JWTokenUtils;
 import nl.femalert.femserver.model.helper.security.PasswordEncoder;
 import nl.femalert.femserver.repository.entity.UserRepository;
@@ -84,14 +83,12 @@ public class AuthenticateController {
         if (foundUsers.size() == 0 || !foundUsers.get(0).validatePassword(password)) {
             throw new AuthenticationException("The provided credentials are invalid.");
         }
-        if (foundUsers.get(0).getStatus() == UserStatus.REGISTERING) {
-            throw new UserNotCompletedRegistrationException("You've not completed your registration yet.");
-        }
         String tokenString = tokenUtils.encode(foundUsers.get(0));
 
         return ResponseEntity
             .accepted()
             .header(HttpHeaders.AUTHORIZATION, String.format("Bearer %s", tokenString))
+            .header("Registration-Completed", Boolean.toString(!(foundUsers.get(0).getStatus() == UserStatus.REGISTERING)))
             .body(foundUsers.get(0));
     }
 }
