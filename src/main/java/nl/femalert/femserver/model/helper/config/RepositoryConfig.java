@@ -13,8 +13,7 @@ public class RepositoryConfig implements WebMvcConfigurer {
 
         registry.addMapping("/**")
                 .allowedMethods("GET", "PUT", "POST", "DELETE")
-                .exposedHeaders(HttpHeaders.AUTHORIZATION)
-                .exposedHeaders("Registration-Completed")
+                .exposedHeaders(HttpHeaders.AUTHORIZATION, "Registration-Completed")
                 .allowedOrigins("*");
     }
 }
