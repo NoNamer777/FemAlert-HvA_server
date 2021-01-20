@@ -85,13 +85,10 @@ public class AuthenticateController {
         }
         String tokenString = tokenUtils.encode(foundUsers.get(0));
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.AUTHORIZATION, String.format("Bearer %s", tokenString));
-        headers.add("Registration-Completed", Boolean.toString(!(foundUsers.get(0).getStatus() == UserStatus.REGISTERING)));
-
         return ResponseEntity
             .accepted()
-            .headers(headers)
+            .header(HttpHeaders.AUTHORIZATION, String.format("Bearer %s", tokenString))
+            .header("Registration-Completed", Boolean.toString(!(foundUsers.get(0).getStatus() == UserStatus.REGISTERING)))
             .body(foundUsers.get(0));
     }
 }
